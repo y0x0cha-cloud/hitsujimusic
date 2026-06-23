@@ -1,0 +1,923 @@
+@charset "utf-8";
+
+/* ==========================================================================
+   共通設定（フォント・基本スタイル）
+   ========================================================================== */
+html {
+  font-size: 100%;
+}
+
+body {
+  font-family: "Noto Sans JP", "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  color: #fff; /* カフェ風に背景に映える白ベースのテキスト */
+  background-color: #121212;
+}
+
+a {
+  text-decoration: none;
+  color: #fff;
+  transition: opacity 0.3s;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: bottom;
+}
+
+/* 英語部分に適用するおしゃれフォント */
+.font-english {
+  font-family: "Philosopher", serif;
+}
+
+/* ==========================================================================
+   レイアウト（カバー・コンテナ）
+   ========================================================================== */
+.cover {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* 背景を画面いっぱいに広げて固定するマジック */
+.main-visual-hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -2;
+}
+
+.main-visual-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 画像を切り抜いてぴったりフィットさせる */
+}
+
+/* 文字を読みやすくするための、うっすら黒いオーバーレイ */
+.bg-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* カフェサイトのようなシックな暗さ */
+  z-index: -1;
+}
+
+/* コンテンツを中央に美しく収める */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 4%;
+}
+
+/* ==========================================================================
+   ヘッダー（中央配置のすっきりスタイル）
+   ========================================================================== */
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* 💡 【重要】ここを調整して、profile.htmlと同じ高さまで下げます！ */
+  padding-top: 120px; /* 👈 元の 60px から「100px」に増やしました。もっと下げたい場合は 120px などにしてください */
+  padding-bottom: 0;
+
+  text-align: center;
+}
+
+.header-logo-area {
+  display: flex;
+  flex-direction: column; /* アイコンと名前も縦並びに */
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 45px; /* アバターとボタン（Home/Price）の距離はそのままキープ */
+}
+
+/* 丸型アバターアイコン */
+.avatar {
+  width: 80px; /* お気に入りの大きさをキープ */
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.site-title {
+  font-size: 2rem; /* 💡少し大きめが映えます */
+  font-weight: bold;
+  letter-spacing: 0.08em;
+
+  /* ★フォントを適用 */
+  font-family: "LXGW Marker Gothic", sans-serif;
+}
+.sub-title {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-top: 2px;
+}
+
+/* ナビゲーションメニュー */
+.main-nav {
+  display: flex;
+  gap: 35px; /* アイコン同士の間隔（距離感）もそのままキープ */
+  list-style: none;
+  justify-content: center;
+  padding-left: 0;
+}
+
+.main-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition:
+    color 0.3s,
+    transform 0.2s;
+}
+
+/* ★ アイコンの大きさ */
+.main-nav a i {
+  font-size: 2rem; /* 迫力ある大きさをキープ */
+}
+
+/* 下に配置する文字の設定 */
+.nav-text-sub {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+}
+
+.main-nav a:hover {
+  color: #fff;
+  transform: translateY(-2px);
+}
+/* ==========================================================================
+   メインコンテンツ・Aboutセクション
+   ========================================================================== */
+.about-profile {
+  text-align: center;
+  padding: 30px 0 60px 0;
+  margin-top: -30px;
+}
+
+.description {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8); /* 背景と被っても文字をくっきり見せる */
+}
+
+/* お問い合わせボタン */
+.cta-container {
+  margin-top: 20px;
+}
+
+.lit-btn-mail {
+  display: inline-block;
+  background-color: #fff;
+  color: #121212;
+  font-weight: bold;
+  padding: 15px 40px;
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.2s,
+    background-color 0.3s;
+}
+
+.lit-btn-mail:hover {
+  transform: translateY(-2px);
+  background-color: #f0f0f0;
+}
+
+/* ==========================================================================
+   ギャラリー部分（Gridレイアウト）
+   ========================================================================== */
+.heading-large {
+  font-size: 1.8rem;
+  text-align: center;
+
+  /* ★ ここを新しく追加しました！ */
+  /* ナビゲーション（Home/Price）との距離をぐっと広げます */
+  margin-top: 50px;
+
+  margin-bottom: 30px;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  padding-bottom: 10px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 綺麗な3カラム */
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.gallery-item {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  aspect-ratio: 1 / 1; /* 正方形に統一してスッキリ見せる */
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.05); /* マウスを乗せるとふんわり拡大 */
+}
+
+/* ==========================================================================
+   下部ボタン・ミニSNS
+   ========================================================================== */
+.about-btn-container {
+  text-align: center;
+  margin: 50px 0;
+}
+
+.main-about-btn {
+  display: inline-block;
+  border: 1px solid #fff;
+  padding: 12px 30px;
+  border-radius: 4px;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.main-about-btn:hover {
+  background: #fff;
+  color: #121212;
+}
+
+.sns-mini-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding-bottom: 60px;
+}
+
+.sns-btn {
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 6px 15px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.sns-btn:hover {
+  border-color: #fff;
+}
+
+/* ==========================================================================
+   詳細ページ（profile.html）用スタイル
+   ========================================================================== */
+.sub-container {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+/* 戻るボタン */
+.sub-header {
+  padding: 20px 0;
+  margin-bottom: 30px;
+}
+
+.back-to-top {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 8px 16px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.3);
+  transition: all 0.3s;
+}
+
+.back-to-top:hover {
+  color: #121212;
+  background: #fff;
+  border-color: #fff;
+}
+
+/* セクション設定 */
+.profile-section {
+  margin-top: 50px; /* ★ここに好きな分だけ上の余白を足します（30px〜50pxでお好みで） */
+  margin-bottom: 100px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 40px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* 詳細ページの各セクションの見出し（h2）の下に少しゆとりを作る */
+.profile-section .heading-large {
+  margin-top: 0; /* 枠の中に入ったので、上の余白をリセットして綺麗に収めます */
+  margin-bottom: 45px; /* 30px から 45px に少し広げて文字をすっきり見せる */
+}
+
+.section-intro {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+
+/* カフェ風の美しい料金表テーブル */
+.info-table {
+  width: 100%;
+  border-collapse: separate; /* 角丸バグ対策 */
+  border-spacing: 0;
+  margin: 0 auto;
+  max-width: 750px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.info-table tr {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.info-table tr:last-child {
+  border-bottom: none;
+}
+
+.info-table th,
+.info-table td {
+  padding: 20px 25px;
+  text-align: left;
+}
+
+.info-table th {
+  width: 35%;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.info-table td {
+  color: #fff;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.table-note {
+  display: block;
+  font-size: 0.85rem;
+  color: #aaa;
+  font-weight: normal;
+  margin-top: 4px;
+}
+
+/* 機材リストのカード型3カラムレイアウト */
+.gear-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gear-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 25px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.gear-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gear-card h3 i {
+  color: #ccc;
+}
+
+.gear-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.gear-card li {
+  font-size: 0.9rem;
+  color: #ddd;
+  margin-bottom: 10px;
+  line-height: 1.5;
+  position: relative;
+  padding-left: 15px;
+}
+
+/* リストの先頭にスタイリッシュな点をつける */
+.gear-card li::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* 下部CTA */
+.sub-cta-container {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sub-cta-container p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 20px;
+}
+
+.price-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.price-card {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.price-card h3 {
+  font-size: 1.2rem;
+  color: #fff;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.price-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.price-card li {
+  font-size: 0.95rem;
+  color: #ddd;
+  margin-bottom: 12px;
+  line-height: 1.6;
+  position: relative;
+  padding-left: 18px;
+}
+
+.price-card li::before {
+  content: "・";
+  position: absolute;
+  left: 0;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.option-plan li span {
+  font-weight: bold;
+  color: #fff;
+}
+
+.note-text {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* タイムライン風のご依頼の流れ */
+.flow-timeline {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 30px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.flow-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.flow-step:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.step-num {
+  font-family: "Philosopher", serif;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 10px;
+  border-radius: 4px;
+  line-height: 1;
+}
+
+.flow-step p {
+  font-size: 0.95rem;
+  color: #eee;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.flow-sub-text {
+  display: block;
+  font-size: 0.85rem;
+  color: #aaa;
+  margin-top: 6px;
+}
+
+/* 機材リストの追加調整 */
+.effects-list {
+  max-height: 250px;
+  overflow-y: auto; /* エフェクターが多いのでスクロールできるようにしてスッキリ化 */
+  padding-right: 5px;
+}
+
+.effects-list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.effects-list::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+/* プロフィール用ギャラリー（エフェクター大画像を活かす） */
+.profile-gallery {
+  margin-top: 30px;
+}
+
+/* 💻 PC版（大画面）では、3列すべてをぶち抜いて横長に広げる */
+.profile-gallery .large-item {
+  grid-column: span 3;
+  aspect-ratio: 2.5 / 1; /* PC版の綺麗な横長比率 */
+  background: rgba(255, 255, 255, 0.02);
+
+  /* 💡 親要素のバグ対策 */
+  border-radius: 8px !important;
+  overflow: hidden !important;
+}
+
+/* ★エフェクター画像を見切れないように綺麗に収める設定 */
+
+/* ライブサポート */
+.live-support-box {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.live-support-box p {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.live-support-box .sub-note {
+  font-size: 0.85rem;
+  color: #aaa;
+  font-weight: normal;
+}
+
+/* YouTubeリンクバナー */
+.youtube-link-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #ff0000;
+  color: #fff;
+  padding: 15px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+  transition:
+    background 0.3s,
+    transform 0.2s;
+}
+
+.youtube-link-banner:hover {
+  background: #cc0000;
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+.video-list-title {
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+/* 動画の2列グリッド */
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+}
+
+.video-container {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 の比率を維持 */
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.video-title {
+  font-size: 0.9rem;
+  color: #ccc;
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ==========================================================================
+   ナビゲーション＆動画ボックスの調整
+   ========================================================================== */
+
+/* メニュー全体の縦並びと真ん中寄せ */
+nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%; /* 親要素いっぱいに広げる */
+}
+
+/* ボタンの横並び（Home / Price） */
+.main-nav {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 50px; /* 動画との間の程よい余白 */
+  list-style: none;
+  padding: 0;
+}
+
+/* 各ボタン内のアイコンとテキストを縦並び中央揃えに */
+.main-nav li a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 🎥 新しい独立した動画ボックスの設定 */
+.nav-single-video-box {
+  width: 100%; /* 基本は枠いっぱいに広げる */
+  max-width: 550px; /* 【最重要】最大の大きさに固定 */
+  aspect-ratio: 16 / 9; /* 16:9 の長方形をキープ */
+  margin: 0 auto; /* 確実に真ん中寄せ */
+  border-radius: 6px; /* 角を少し丸く */
+  overflow: hidden; /* はみ出た動画をカット */
+  background-color: #000; /* 読み込み前の黒枠 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); /* 立体感アップ */
+}
+
+/* ボックス内の動画のフィット設定 */
+.nav-single-video-box video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 枠内に動画を綺麗にフィットさせる */
+}
+
+/* ==========================================================================
+   ご依頼フォーム（リットリンクの白丸ボタン踏襲＆カフェ風入力欄）
+   ========================================================================== */
+.custom-form {
+  text-align: center;
+}
+.info-card h2 {
+  text-align: center !important;
+  width: 100%;
+}
+
+/* 入力欄（テキストエリアやインプット）のスタイリング */
+.custom-form input[type="text"],
+.custom-form input[type="email"],
+.custom-form textarea {
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.3); /* 枠線を少し明るくして輪郭をはっきりと */
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  font-family: inherit;
+  box-sizing: border-box; /* はみ出し防止マスト設定 */
+}
+
+/* ラジオボタンまわりの文字を左寄せ・見やすく調整 */
+.form-group-item {
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto 20px auto;
+}
+.form-group-item label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* 背景が透けても文字が見やすいように影を強化 */
+}
+.form-choice-group {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 15px;
+}
+.choice-label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+.required-badge {
+  background: #ff4a4a;
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+/* 送信ボタンの装飾（トップページのメールボタンと同じ仕様に） */
+.custom-form .form-submit-btn {
+  display: inline-block;
+  background-color: #fff;
+  color: #121212;
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 15px 40px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition:
+    transform 0.2s,
+    background-color 0.3s;
+  margin: 20px auto 0 auto;
+}
+
+/* ホバー時の動き */
+.custom-form .form-submit-btn:hover {
+  transform: translateY(-2px);
+  background-color: #f0f0f0;
+  opacity: 1; /* 共通設定の透明化を打ち消す */
+}
+.form-page .sub-header .back-to-top {
+  font-size: 0.9rem; /* 文字を少し小さく */
+  letter-spacing: 0.05em; /* 文字の間隔を少し整える */
+  opacity: 0.8; /* ほんのり透過させて背景に馴染ませる */
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+/* ホバーしたときの動き */
+.form-page .sub-header .back-to-top:hover {
+  opacity: 1; /* マウスを乗せたらハッキリ表示 */
+  transform: translateX(-2px); /* 矢印の方向に少しだけ動く可愛い演出 */
+}
+
+/* ==========================================================================
+   ご依頼フォーム専用の微調整
+   ========================================================================== */
+
+/* フォームのタイトルをさらに強調 */
+.info-card .heading-large {
+  font-size: 2.2rem; /* 1.8rem から 2.2rem に大きくしました */
+  margin-top: 20px; /* 上のヘッダーとの距離 */
+  margin-bottom: 60px; /* 下のフォームとの距離を大幅にあけました */
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3); /* 下線を少し太くして安定感を */
+}
+
+/* フォームの各項目（お名前など）の間隔も少しだけ広げて見やすく */
+.custom-form .form-group-item {
+  margin-bottom: 30px;
+}
+body.price-page .page-header {
+  /* 💡 いま他のページが 120px になっているので、ここを「20px」にして一気に引き上げます！ */
+  padding-top: 80px !important;
+}
+.fade-in-box {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+}
+
+/* 2. 画面内に入ったら100%表示で元の位置へ */
+.fade-in-box.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ==========================================================================
+   レスポンシブ対応（スマホ表示用の調整：必ず一番最後に配置）
+   ========================================================================== */
+@media (max-width: 768px) {
+  .price-container,
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* 📱 スマホ環境のときだけ、1マス分の幅（100%）に調整 */
+  .profile-gallery .large-item {
+    grid-column: span 1;
+    aspect-ratio: auto;
+    overflow: hidden; /* 角丸バグを完全に防ぐ */
+    width: 100%; /* 横幅いっぱいに広げる */
+  }
+
+  /* 📱 スマホ環境のエフェクター画像：PC用のcontainを完全に上書きして中央いっぱいに */
+  .profile-gallery .large-item img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover !important;
+    display: block;
+    border-radius: 8px !important; /* 👈 スマホでも確実に角丸になるよう追記 */
+  }
+
+  .info-table th,
+  .info-table td {
+    padding: 15px;
+  }
+
+  .info-table th {
+    width: 40%;
+    font-size: 0.9rem;
+  }
+
+  .info-table td {
+    font-size: 1rem;
+  }
+
+  .gear-grid {
+    grid-template-columns: 1fr; /* スマホでは機材カードを縦1列に */
+  }
+
+  /* スマホのとき、一番下の「依頼する」ボタンの文字サイズをトップページと合わせる */
+  .lit-btn-mail {
+    font-size: 1rem;
+    padding: 15px 50px; /* 横幅を少しだけ広げて押しやすく */
+  }
+}

@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>羊ちゃんご依頼サイト</title>
+    <meta
+      name="description"
+      content="下北沢で活動する音楽家「羊ちゃん」の音楽のお仕事（ライブサポート・宅録）ご依頼ホームページです。"
+    />
+
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=LXGW+Marker+Gothic&family=M+PLUS+1+Code:wght@100..700&family=Philosopher&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="icon" href="image/fabicon.png" type="image/png" />
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+    <link rel="stylesheet" href="watastyle.css" />
+  </head>
+  <body class="main-page">
+    <div class="cover cover-home">
+      <div class="main-visual-hero">
+        <img src="image/img2.jpg" alt="メイン写真" />
+      </div>
+      <div class="bg-overlay"></div>
+
+      <div class="container">
+        <header class="page-header">
+          <div class="header-logo-area">
+            <div class="avatar">
+              <img src="image/img3.jpg" alt="アイコン" />
+            </div>
+            <div class="title-meta">
+              <h1 class="site-title">羊ちゃん</h1>
+            </div>
+          </div>
+
+          <nav>
+            <ul class="main-nav font-english">
+              <li>
+                <a
+                  href="https://x.com/aohitsuji0703?s=21"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fa-brands fa-x-twitter nav-icon-large"></i>
+                  <span class="nav-text-sub">X (Twitter)</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:y0x0cha@gmail.com">
+                  <i class="fa-regular fa-envelope nav-icon-large"></i>
+                  <span class="nav-text-sub">Contact</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <section class="about-profile">
+          <p class="description fade-in-box">
+            はじめまして。<br />
+            下北沢で音楽やってます。<br />
+            ライブサポート、歌入れ、オケ制作など
+            <br />結構なんでもやります。<br />
+            お問い合わせはGmailもしくはXのDMまで。
+          </p>
+
+          <div class="cta-container">
+            <a href="form.html" class="lit-btn-mail">
+              <span class="btn-main-text"
+                ><i class="fa-regular fa-paper-plane"></i> 依頼する</span
+              >
+            </a>
+          </div>
+        </section>
+
+        <main class="links-container">
+          <h3 class="heading-large font-english">Works & Samples</h3>
+
+          <div class="gallery-grid">
+            <div class="gallery-item" data-aos="fade-up">
+              <a href="sample.html">
+                <img src="image/img1.jpg" alt="実績・写真1"
+              /></a>
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="150">
+              <a href="sample.html">
+                <img src="image/img9.jpg" alt="実績・写真2"
+              /></a>
+            </div>
+            <div class="gallery-item" data-aos="fade-up" data-aos-delay="300">
+              <a href="sample.html">
+                <img src="image/img5.jpg" alt="実績・写真3"
+              /></a>
+            </div>
+          </div>
+
+          <div class="about-btn-container">
+            <a href="profile.html" class="main-about-btn font-english">
+              Price & Gear <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          </div>
+
+          <div class="sns-mini-buttons">
+            <a
+              href="http://www.youtube.com/@Y.Sheeep"
+              class="sns-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa-brands fa-youtube"></i> YouTube
+            </a>
+            <a
+              href="https://x.com/aohitsuji0703?s=21"
+              class="sns-btn"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i class="fa-brands fa-x-twitter"></i>
+            </a>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        // 1. もともと入っていたAOS（ギャラリー用）を動かす
+        if (typeof AOS !== "undefined") {
+          AOS.init({
+            duration: 800, // 0.8秒かけて動く
+            once: true, // 最初の1回だけ動く
+          });
+        }
+
+        // 2. ★新しく追加：挨拶用のfade-in-boxを動かす仕組み
+        const fadeBoxes = document.querySelectorAll(".fade-in-box");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-active");
+                observer.unobserve(entry.target); // 1回表示されたら監視終了
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.15, // 画面に15%入ったらふわっとスタート
+          },
+        );
+
+        fadeBoxes.forEach((box) => {
+          observer.observe(box);
+        });
+      });
+    </script>
+  </body>
+</html>

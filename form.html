@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>お仕事依頼フォーム | 羊ちゃんご依頼サイト</title>
+    <meta
+      name="description"
+      content="下北沢で活動する音楽家「羊ちゃん」の音楽のお仕事依頼フォームです"
+    />
+
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Philosopher&family=Noto+Sans+JP:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="icon" href="image/fabicon.png" type="image/png" />
+
+    <link rel="stylesheet" href="watastyle.css" />
+  </head>
+  <body class="form-page">
+    <div class="main-visual-hero">
+      <img src="image/img7.jpg" alt="背景写真" />
+    </div>
+
+    <div class="bg-overlay"></div>
+
+    <div class="cover">
+      <div class="container">
+        <header class="page-header">
+          <div class="header-logo-area">
+            <a
+              href="index.html"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                text-decoration: none;
+                color: inherit;
+              "
+            >
+              <div class="avatar">
+                <img src="image/img3.jpg" alt="アイコン" />
+              </div>
+              <div class="title-meta">
+                <h1 class="site-title"></h1>
+              </div>
+            </a>
+          </div>
+
+          <nav>
+            <ul class="main-nav font-english">
+              <li>
+                <a href="index.html"
+                  ><i class="fa-solid fa-house fa-lg"></i>
+                  <span class="nav-text-sub">Home</span></a
+                >
+              </li>
+              <li>
+                <a href="profile.html"
+                  ><i class="fa-solid fa-yen-sign fa-lg"></i>
+                  <span class="nav-text-sub">Price</span></a
+                >
+              </li>
+            </ul>
+          </nav>
+        </header>
+
+        <main style="margin-top: 20px">
+          <section class="info-card fade-in-box" id="work-form">
+            <h2 class="heading-large font-english">Request Form</h2>
+
+            <form
+              action="https://formspree.io/f/xxxxxx"
+              method="POST"
+              class="custom-form"
+            >
+              <div class="form-group-item">
+                <label for="username"
+                  >お名前 <span class="required-badge">必須</span></label
+                >
+                <input
+                  type="text"
+                  id="username"
+                  name="お名前"
+                  required
+                  placeholder="羊田 ヤギ太郎"
+                />
+              </div>
+
+              <div class="form-group-item">
+                <label for="email"
+                  >メールアドレス
+                  <span class="required-badge">必須</span></label
+                >
+                <input
+                  type="email"
+                  id="email"
+                  name="返信先アドレス"
+                  required
+                  placeholder="example@email.com"
+                />
+              </div>
+
+              <div class="form-group-item">
+                <label
+                  >ご依頼内容 <span class="required-badge">必須</span></label
+                >
+                <div class="form-choice-group">
+                  <label class="choice-label">
+                    <input
+                      type="radio"
+                      name="ご依頼内容"
+                      value="ライブサポート"
+                      required
+                    />
+                    <span>ライブサポート</span>
+                  </label>
+                  <label class="choice-label">
+                    <input type="radio" name="ご依頼内容" value="宅録" />
+                    <span>宅録</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group-item">
+                <label
+                  >ご希望のパート
+                  <span class="required-badge">必須</span></label
+                >
+                <div class="form-choice-group">
+                  <label class="choice-label">
+                    <input
+                      type="radio"
+                      name="ご希望のパート"
+                      value="ギター"
+                      required
+                    />
+                    <span>ギター</span>
+                  </label>
+                  <label class="choice-label">
+                    <input type="radio" name="ご希望のパート" value="ベース" />
+                    <span>ベース</span>
+                  </label>
+                  <label class="choice-label">
+                    <input
+                      type="radio"
+                      name="ご希望のパート"
+                      value="ボーカル"
+                    />
+                    <span>ボーカル</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group-item">
+                <label for="song-title"
+                  >曲名/作曲者 <span class="required-badge">必須</span></label
+                >
+                <input
+                  type="text"
+                  id="song-title"
+                  name="曲名"
+                  required
+                  placeholder="曲名/作曲者名を入力してください"
+                />
+              </div>
+
+              <div class="form-group-item">
+                <label
+                  >追加メニューの有無
+                  <span class="required-badge">必須</span></label
+                >
+                <div class="form-choice-group">
+                  <label class="choice-label">
+                    <input
+                      type="radio"
+                      name="追加メニューの有無"
+                      value="あり"
+                      required
+                    />
+                    <span>あり</span>
+                  </label>
+                  <label class="choice-label">
+                    <input
+                      type="radio"
+                      name="追加メニューの有無"
+                      value="なし"
+                    />
+                    <span>なし</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group-item">
+                <label for="additional-menu">追加メニューの詳細</label>
+                <input
+                  type="text"
+                  id="additional-menu"
+                  name="追加メニューの詳細"
+                  placeholder="「あり」の場合、希望メニューをご記入ください"
+                />
+              </div>
+
+              <div class="form-group-item">
+                <label for="message">その他ご要望</label>
+                <textarea
+                  id="message"
+                  name="その他ご要望"
+                  rows="5"
+                  placeholder="BPMの変更や、機体の希望、アレンジの参考URLなどがあればご記入ください"
+                ></textarea>
+              </div>
+
+              <div class="form-submit-container" style="padding-bottom: 60px">
+                <button type="submit" class="form-submit-btn">
+                  この内容で送信する
+                </button>
+              </div>
+            </form>
+          </section>
+        </main>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // 「fade-in-box」がついている要素をすべてまとめて取得
+        const fadeBoxes = document.querySelectorAll(".fade-in-box");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-active");
+                observer.unobserve(entry.target); // 表示されたらその要素の監視を終了
+              }
+            });
+          },
+          {
+            root: null,
+            rootMargin: "0px",
+            threshold: 0.15, // 画面に15%入ったらふわっとスタート
+          },
+        );
+
+        // すべての黒枠セクションに監視の目を光らせる
+        fadeBoxes.forEach((box) => {
+          observer.observe(box);
+        });
+      });
+    </script>
+  </body>
+</html>
